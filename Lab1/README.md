@@ -1,4 +1,4 @@
-# Laboratorio 1: Introducción a la Seguridad Computacional
+# Laboratorio 1: Padding Oracle Attack
 
 ### Mikael Gaete - Dylan Riquelme
 
@@ -19,10 +19,10 @@ Sin embargo, el largo anterior no cambia hasta que se envía el mensaje `'0' * 2
 primer bloque de output es menor por el IV.
 
 Otro comportamiento que se pudo observar consiste en que, para un mismo mensaje enviado en instancias distintas, se 
-genera un texto cifrado diferente lo que sugiere que las respuesta se forman de manera pseudo-aleatoria. A 
+genera un texto cifrado diferente lo que sugiere que las respuestas se forman de manera pseudoaleatoria. A 
 continuación se puede observar el resultado de enviar el input `'0'` en dos iteraciones distintas:
 
-#### Cifrado retornado en el primer envio:
+#### Cifrado retornado en el primer envío:
 ``` plain text
 bba9aafcb41b989d421cabcef476ea7069623c7986ed6338fffc2ba32e8c2e2a3138a1a71d88b7925bcba8c94e1d4986a47b7fd4a3e2934d6dbd943d1ade74737909473be2de145ff6e4ee85cd71302039d6a07528aedc716ea869ffcbd054a4e9f30c63f67f77be778de9941e86ee28
 ```
@@ -42,7 +42,7 @@ distinto, se nos retorna el error `"pkcs7: invalid padding (last byte does not m
 
 Para llevar a cabo el siguiente punto se generó el siguiente [script](https://github.com/MikaGaete/LabsSeguridad/blob/main/Lab1/parte_b.py) el cual es una versión modificada 
 del script utilizado en la parte a) la cual no realiza tantas iteraciones y que imprime el mensaje enviado, la 
-codificación recibida y la decodificación recibida. Esto nos permitió observar nuevamente cuadno ocurren los saltos 
+codificación recibida y la decodificación recibida. Esto nos permitió observar nuevamente cuando ocurren los saltos 
 de bloque y la manera en la que el servidor retorna la información, la cual en este caso corresponde a caracteres 
 hexadecimales.
 
@@ -51,7 +51,7 @@ hexadecimales.
 Para esto se podría utilizar el mismo ejercicio antes mencionado:
 1. Variar el largo de los inputs.
 2. Observar cuando se generan _saltos_ en el largo de los bloques. 
-3. Determinar el tamaño del bloque en base a la cantidad de caracteres que tenía el mensaje enviado en cada salto.
+3. Determinar el tamaño del bloque basándonos en la cantidad de caracteres que tenía el mensaje enviado en cada salto.
 
 ---
 
@@ -68,7 +68,7 @@ La función creada se puede encontrar en el siguiente [script](https://github.co
 ### f) Ejecute satisfactoriamente el ataque descrito para obtener _key_.
 
 La función creada se puede encontrar en el siguiente [script](https://github.com/MikaGaete/LabsSeguridad/blob/main/Lab1/parte_f.py),
-al hacer uso de ésta se obtiene el siguiente texto plano:
+al hacer uso de esta se obtiene el siguiente texto plano:
 
 ``` plain text
 4a16390020"}\x04\x04\x04\x04b1fe6ce7bf54d32c6342c62a1797cd87bf74f04b841b9c18"secret":"83c804{"name":"aaaaa",Y\xdf\xcb\xcf"t\xa6\xc2\x19V\x8c\x0c\xa1C\xba\xf7
