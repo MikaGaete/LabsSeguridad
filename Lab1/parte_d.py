@@ -33,14 +33,10 @@ def decrypt_block(current_block: bytes, previous_block: bytes) -> bytes:
 
     for guess in range(256):
         candidate = bytearray(previous_block)
-
-        for j in range(15 , block_size):
-            candidate[j] = decrypted[j] ^ 1
-
         candidate[15] = guess
         modified_ciphertext = bytes(candidate) + current_block
 
-        if decode(modified_ciphertext):
+        if decode(modified_ciphertext) and previous_block[15] != guess:
             decrypted[15] = guess ^ 1
             plain_text[15] = decrypted[15] ^ previous_block[15]
             break
